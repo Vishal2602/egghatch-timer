@@ -1,0 +1,163 @@
+/* 
+ * EggHatch Timer - Global Styles
+ * Pokemon GBA-inspired design system
+ */
+
+/* Import Press Start 2P font (backup in case CDN fails) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* CSS Custom Properties - Design Tokens */
+:root {
+  /* Primary Colors (GBA Pokemon Inspired) */
+  --color-teal: #40C8C8;
+  --color-teal-dark: #208888;
+  --color-teal-light: #60E8E8;
+  --color-cream: #F8F8F0;
+  --color-white: #FFFFFF;
+  
+  /* Accent Colors */
+  --color-yellow: #FFCB05;
+  --color-yellow-light: #FFE040;
+  --color-yellow-dark: #CC9900;
+  
+  --color-blue: #3D7DCA;
+  --color-blue-dark: #285090;
+  
+  --color-red: #E83030;
+  --color-red-dark: #A82020;
+  
+  /* Neutral Tones */
+  --color-text: #303030;
+  --color-text-secondary: #606060;
+  --color-shadow: #A0A0A0;
+  
+  /* Background */
+  --color-screen-bg: #B8D8B8;
+  --color-glow: #98F898;
+  
+  /* Typography */
+  --font-pixel: 'Press Start 2P', cursive;
+  
+  /* Spacing (4px grid) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  
+  /* Borders */
+  --border-width: 3px;
+  --border-radius-sm: 2px;
+  --border-radius-md: 4px;
+  --border-radius-lg: 8px;
+  
+  /* Shadows */
+  --shadow-button: 0 4px 0;
+  --shadow-frame: 4px 4px 0;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base styles */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-pixel);
+  background: var(--color-screen-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  line-height: 1.4;
+  
+  /* Subtle scanline effect for CRT feel */
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.02) 0px,
+      rgba(0, 0, 0, 0.02) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+}
+
+/* Screen glow effect on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(152, 248, 152, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Focus states for accessibility */
+:focus {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-yellow);
+  outline-offset: 2px;
+}
+
+/* Button reset */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Selection styling */
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-text);
+}
+
+/* Scrollbar styling (webkit browsers) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-teal-dark);
+}

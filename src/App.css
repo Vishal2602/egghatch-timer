@@ -1,0 +1,95 @@
+/* App-specific styles */
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-md);
+}
+
+.app-container {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Decorative footer */
+.decorations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.decoration-text {
+  font-family: var(--font-pixel);
+  font-size: 8px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* CSS-only Pokeball icon */
+.pokeball-icon {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(
+    180deg,
+    var(--color-red) 0%,
+    var(--color-red) 45%,
+    #303030 45%,
+    #303030 55%,
+    #F8F8F8 55%,
+    #F8F8F8 100%
+  );
+  border-radius: 50%;
+  border: 2px solid #303030;
+  position: relative;
+  animation: pokeballFloat 2s ease-in-out infinite;
+}
+
+.pokeball-icon::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #F8F8F8;
+  border: 2px solid #303030;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.decorations .pokeball-icon:last-child {
+  animation-delay: 0.5s;
+}
+
+@keyframes pokeballFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(5deg); }
+}
+
+/* Responsive adjustments */
+@media (min-width: 480px) {
+  .app-container {
+    margin-top: 32px;
+  }
+}
+
+@media (max-width: 420px) {
+  .app {
+    padding: var(--space-sm);
+  }
+  
+  .decoration-text {
+    font-size: 7px;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pokeball-icon {
+    animation: none;
+  }
+}

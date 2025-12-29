@@ -1,0 +1,100 @@
+.display {
+  background: linear-gradient(180deg, #E8F8E8 0%, #D0E8D0 100%);
+  border: 3px solid var(--color-teal-dark);
+  border-radius: 4px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow:
+    inset 0 2px 0 #F8FFF8,
+    inset 0 -2px 0 #B8D8B8;
+  position: relative;
+  overflow: hidden;
+}
+
+.timeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.digits {
+  font-family: var(--font-pixel);
+  font-size: 48px;
+  color: var(--color-text);
+  text-shadow:
+    3px 3px 0 var(--color-teal-dark),
+    -1px -1px 0 var(--color-white);
+  min-width: 80px;
+  display: inline-block;
+}
+
+.colon {
+  font-family: var(--font-pixel);
+  font-size: 48px;
+  color: var(--color-text);
+  text-shadow:
+    3px 3px 0 var(--color-teal-dark),
+    -1px -1px 0 var(--color-white);
+}
+
+.blinking {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* Running state - subtle glow */
+.running {
+  box-shadow:
+    inset 0 2px 0 #F8FFF8,
+    inset 0 -2px 0 #B8D8B8,
+    0 0 15px rgba(152, 248, 152, 0.4);
+}
+
+/* Complete state - celebration */
+.complete {
+  animation: completeFlash 0.3s ease 3;
+}
+
+.complete .digits,
+.complete .colon {
+  color: var(--color-red);
+  text-shadow:
+    0 0 10px var(--color-yellow-light),
+    3px 3px 0 var(--color-red-dark);
+}
+
+.completeText {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--color-yellow);
+  text-shadow: 2px 2px 0 var(--color-red-dark);
+  margin-top: 10px;
+  animation: completeBounce 0.5s ease infinite;
+}
+
+@keyframes completeFlash {
+  0%, 100% { background: linear-gradient(180deg, #E8F8E8 0%, #D0E8D0 100%); }
+  25%, 75% { background: linear-gradient(180deg, #FFE040 0%, #FFCB05 100%); }
+  50% { background: linear-gradient(180deg, #E8F8E8 0%, #D0E8D0 100%); }
+}
+
+@keyframes completeBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Responsive sizing */
+@media (max-width: 400px) {
+  .digits, .colon {
+    font-size: 36px;
+  }
+  
+  .digits {
+    min-width: 60px;
+  }
+}
